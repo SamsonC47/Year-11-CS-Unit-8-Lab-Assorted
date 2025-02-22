@@ -14,7 +14,15 @@ public class Assorted {
      *         integer data types.
      */
     public static int findSum(List<?> list) {
-        return 0;
+        int sum = 0;
+        for(int i = 0;i<list.size();i++){
+            if(list.get(i) instanceof String) {
+                sum += Integer.parseInt((String)list.get(i));
+            } else {
+                sum += (int)list.get(i);
+            }
+        }
+        return sum;
     }
 
     /**
@@ -26,7 +34,13 @@ public class Assorted {
      * @return a list containing integers only.
      */
     public static List<Integer> filterStrings(List list) {
-        return null;
+        ArrayList<Integer> onlyOne = new ArrayList<Integer>();
+        for(int i = 0;i<list.size();i++){
+            if(list.get(i) instanceof Integer) {
+                onlyOne.add((Integer)list.get(i));
+            }
+        }
+        return onlyOne;
     }
 
     /**
@@ -39,7 +53,11 @@ public class Assorted {
      *         e.g. ["1: a", "2: b", "3: c"]
      */
     public static List<String> lineNumbering(List<String> list) {
-        return null;
+        ArrayList<String> lineNumber = new ArrayList<String>();
+        for(int i= 0;i<list.size();i++){
+            lineNumber.add((i+1) +": " + list.get(i));
+        }
+        return lineNumber;
     }
 
     /**
@@ -61,8 +79,15 @@ public class Assorted {
      * @return the number of people who are still on the bus after the last stop.
      */
     public static int busStop(List<Integer[]> list) {
-        return 0;
+        int people = 0;
+        for (Integer[] stop : list) {
+            people += stop[0];
+            people -= stop[1];
+        }
+
+        return people;
     }
+
 
     /**
      * Challenge 5
@@ -73,8 +98,13 @@ public class Assorted {
      *         Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1.
      */
     public static int toBinary(List<Integer> list) {
-        return 0;
+        int result = 0;
+        for (int i = 0; i < list.size(); i++) {
+            result = (result << 1) | list.get(i);
+        }
+        return result;
     }
+
 
     /**
      * Challenge 6
@@ -92,7 +122,18 @@ public class Assorted {
      *              subtractList([1,2,2,2,3], [2]) returns [1,3]
      */
     public static List<Integer> subtractList(List<Integer> listA, List<Integer> listB) {
-        return null;
+        ArrayList<Integer> storage = new ArrayList<>();
+        for(int i=0;i<listB.size();i++){
+            for(int j=0;j<listA.size();j++){
+                if(listA.get(j) == listB.get(i)){
+                    storage.add(j);
+                }
+            }
+        }
+        for(int k=0;k<storage.size();k++){
+            listA.remove(storage.get(k));
+        }
+        return listA;
     }
 
     /**
